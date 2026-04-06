@@ -1,0 +1,16 @@
+@font-face {
+  font-family: 'MochiyPopPOne';
+  src: url('../assets/fonts/MochiyPopPOne-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'MochiyPopPOne', sans-serif;
+}
