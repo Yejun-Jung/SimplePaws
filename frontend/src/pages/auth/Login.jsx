@@ -1,16 +1,31 @@
 import React, { useState } from 'react'
 import './Login.scss'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 import cat from '@/assets/images/sleeping_cat.png'
+import { login } from '@/api/auth.api'
 
 const Login = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [error, setError] = useState('')
+  const navigate = useNavigate()
 
-  const handleLogin = (e) => {
-    e.preventDefault()
-    // TODO: 로그인 API 연동
-    console.log({ email, password })
+  const handleLogin = async () => {
+    setError('')
+
+    if (!email || !password) {
+      setError('이메일과 비밀번호를 입력해주세요.')
+      return
+    }
+
+    try {
+      const res = await login({ email, password })
+      localStorage.setItem('token', res.data.token)
+      localStorage.setItem('email', email)
+      navigate('/main')
+    } catch (err) {
+      setError('이메일 또는 비밀번호가 올바르지 않습니다.')
+    }
   }
 
   return (
@@ -31,6 +46,9 @@ const Login = () => {
 
       {/* 로그인 카드 */}
       <div className="login-card">
+        <button className="back-btn" onClick={() => navigate(-1)}>
+          &lt; 뒤로가기
+        </button>
         <h1 className="title">
           <span>Simple</span>
           <span>Paws</span>
@@ -50,6 +68,7 @@ const Login = () => {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
+          {error && <p className="error">{error}</p>}
           <button onClick={handleLogin}>로그인</button>
         </div>
 

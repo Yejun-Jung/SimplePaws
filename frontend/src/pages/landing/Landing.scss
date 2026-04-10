@@ -55,6 +55,11 @@
 
     .polaroid {
       position: absolute;
+      transition: transform 0.3s ease;
+
+  &:hover {
+    transform: translateY(-12px) !important;
+  }
 
       .polaroid-img {
         width: 290px;
