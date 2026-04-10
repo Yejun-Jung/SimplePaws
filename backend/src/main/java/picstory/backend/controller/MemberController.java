@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import picstory.backend.service.MemberService;
+import picstory.backend.web.dto.LoginRequest;
 import picstory.backend.web.dto.SignupRequest;
 
 @RestController
@@ -16,6 +17,12 @@ public class MemberController {
     @PostMapping
     public ResponseEntity<Void> signup(@RequestBody SignupRequest request) {
         memberService.signup(request);
+        return ResponseEntity.ok().build();
+    }
+
+    @DeleteMapping
+    public ResponseEntity<Void> delete(@RequestBody LoginRequest request) {
+        memberService.delete(request.getEmail());
         return ResponseEntity.ok().build();
     }
 }

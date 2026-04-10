@@ -29,4 +29,10 @@ public class MemberService {
 
         memberRepository.save(member);
     }
+
+    public void delete(String email) {
+        Member member = memberRepository.findByEmail(email)
+                .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 이메일입니다."));
+        memberRepository.delete(member);
+    }
 }
