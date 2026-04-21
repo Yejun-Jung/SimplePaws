@@ -7,7 +7,6 @@
   background-color: $yellow;
   overflow-x: hidden;
 
-  // 격자 배경
   .grid-bg {
     position: fixed;
     inset: 0;
@@ -19,7 +18,6 @@
     z-index: 0;
   }
 
-  // 헤더
   .header {
     position: fixed;
     top: 0;
@@ -72,7 +70,6 @@
     }
   }
 
-  // 찢어진 종이
   .torn-paper {
     position: absolute;
     top: -40px;
@@ -84,7 +81,6 @@
     z-index: 2;
   }
 
-  // 일기 쓰기 버튼
   .write-btn-wrap {
     position: absolute;
     right: 40px;
@@ -111,7 +107,6 @@
     }
   }
 
-  // 게시물 그리드
   .post-grid {
     position: relative;
     z-index: 1;
@@ -154,15 +149,33 @@
         }
       }
 
-      .post-title {
-        font-size: 15px;
-        color: $brown;
-        margin-bottom: 8px;
-      }
+      .post-info {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
 
-      .post-date {
-        font-size: 13px;
-        color: $semi-brown;
+        .text-content {
+          .post-title {
+            font-size: 15px;
+            color: $brown;
+            margin-bottom: 8px;
+          }
+
+          .post-date {
+            font-size: 13px;
+            color: $semi-brown;
+          }
+        }
+
+        .post-tag {
+          font-size: 12px;
+          color: $brown;
+          background-color: #fdf0e0;
+          padding: 4px 8px;
+          border-radius: 12px;
+          white-space: nowrap;
+          border: 1px solid $semi-brown;
+        }
       }
     }
   }

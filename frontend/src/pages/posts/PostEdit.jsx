@@ -40,13 +40,11 @@ const PostEdit = () => {
           title: data.title || "",
           content: data.content || "",
         });
+        
         setCategory(data.category || "");
-
-        if (data.category !== "DOG" && data.category !== "CAT") {
-          setCategory("ETC");
-          setCustomCategory(data.category === "ETC" ? "" : data.category || ""); // ← 수정
-        } else {
-          setCategory(data.category || "");
+        
+        if (data.category === "ETC") {
+          setCustomCategory(data.customCategory || "");
         }
 
         if (data.imageUrl) {
@@ -97,7 +95,8 @@ const PostEdit = () => {
         title: form.title,
         content: form.content,
         imageUrl,
-        category: category === "ETC" ? customCategory : category, // ← 수정
+        category: category,
+        customCategory: category === "ETC" ? customCategory : "",
       });
       alert("일기가 수정되었습니다!");
       navigate(-1);

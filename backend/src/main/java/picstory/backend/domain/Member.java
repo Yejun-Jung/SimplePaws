@@ -1,33 +1,35 @@
 package picstory.backend.domain;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Builder;
+import lombok.*;
 
 @Entity
-@Table(name = "members")
 @Getter
 @NoArgsConstructor
-@Builder
 @AllArgsConstructor
+@Builder
+@Table(name = "members")
 public class Member {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false, unique = true)
+    private String name;
     private String email;
-
-    @Column(nullable = false)
     private String password;
 
-    @Column(nullable = false)
-    private String name;
+    @Column(columnDefinition = "TEXT")
+    private String bio;
 
-    @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
-    private MemberStatus status;
+    private String profileImageUrl;
+
+    public void update(String name, String email, String password, String bio, String profileImageUrl) {
+        this.name = name;
+        this.email = email;
+        if (password != null && !password.isEmpty()) {
+            this.password = password;
+        }
+        this.bio = bio;
+        this.profileImageUrl = profileImageUrl;
+    }
 }

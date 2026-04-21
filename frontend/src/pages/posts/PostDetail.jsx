@@ -95,7 +95,7 @@ const PostDetail = () => {
               </div>
               {post.category && (
                 <div className="tag">
-                  # {post.category === 'DOG' ? '강아지' : post.category === 'CAT' ? '고양이' : post.category}
+                  # {post.category === 'ETC' ? post.customCategory : (post.category === 'DOG' ? '강아지' : '고양이')}
                 </div>
               )}
             </div>

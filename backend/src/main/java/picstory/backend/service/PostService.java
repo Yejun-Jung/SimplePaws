@@ -36,6 +36,7 @@ public class PostService {
         return PostResponse.from(post);
     }
 
+    // 게시물 생성
     @Transactional
     public PostResponse createPost(String email, CreatePostRequest request) {
         Member member = memberRepository.findByEmail(email)
@@ -48,17 +49,20 @@ public class PostService {
                 .content(request.getContent())
                 .imageUrl(request.getImageUrl())
                 .category(request.getCategory())
+                .customCategory(request.getCustomCategory()) // 🔥 이 부분 추가
                 .build();
 
         return PostResponse.from(postRepository.save(post));
     }
 
+    // 게시물 수정
     @Transactional
     public PostResponse updatePost(Long postId, UpdatePostRequest request) {
         Post post = postRepository.findById(postId)
                 .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 게시물입니다."));
 
-        post.update(request.getTitle(), request.getContent(), request.getDate(), request.getImageUrl(), request.getCategory());
+        // 🔥 파라미터 마지막에 request.getCustomCategory() 추가
+        post.update(request.getTitle(), request.getContent(), request.getDate(), request.getImageUrl(), request.getCategory(), request.getCustomCategory());
         return PostResponse.from(postRepository.save(post));
     }
 

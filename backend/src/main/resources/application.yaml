@@ -2,7 +2,7 @@ spring:
   application:
     name: demo
   datasource:
-    url: ${SPRING_DATASOURCE_URL:jdbc:mysql://localhost:3307/simplepawsdb?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=Asia/Seoul}
+    url: ${SPRING_DATASOURCE_URL:jdbc:mysql://localhost:3306/simplepawsdb?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=Asia/Seoul}
     username: ${SPRING_DATASOURCE_USERNAME:pawsuser}
     password: ${SPRING_DATASOURCE_PASSWORD:pawspass}
   jpa:

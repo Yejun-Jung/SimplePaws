@@ -33,6 +33,9 @@ public class Post {
     @Enumerated(EnumType.STRING)
     private PostCategory category;
 
+    // 🔥 사용자가 직접 입력한 기타 카테고리를 저장할 컬럼 추가
+    private String customCategory;
+
     @Column(nullable = false, updatable = false)
     private LocalDateTime createdAt;
 
@@ -50,11 +53,13 @@ public class Post {
         this.updatedAt = LocalDateTime.now();
     }
 
-    public void update(String title, String content, String date, String imageUrl, PostCategory category) {
+    // 🔥 업데이트 시 customCategory도 반영되도록 파라미터 추가
+    public void update(String title, String content, String date, String imageUrl, PostCategory category, String customCategory) {
         this.title = title;
         this.content = content;
         this.date = date;
         this.imageUrl = imageUrl;
         this.category = category;
+        this.customCategory = customCategory;
     }
 }

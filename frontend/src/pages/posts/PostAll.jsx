@@ -33,7 +33,6 @@ const PostAll = () => {
 
   return (
     <section className='post-all'>
-      {/* SVG 필터 */}
       <svg width="0" height="0" style={{ position: 'absolute' }}>
         <filter id="torn-effect" x="-5%" y="-50%" width="110%" height="200%">
           <feTurbulence type="fractalNoise" baseFrequency="0.025" numOctaves="5" seed="3" result="noise" />
@@ -41,7 +40,6 @@ const PostAll = () => {
         </filter>
       </svg>
 
-      {/* 헤더 */}
       <header className="header">
         <div className="logo" onClick={() => navigate('/main')}>
           <span>Simple</span>
@@ -53,20 +51,16 @@ const PostAll = () => {
         </div>
       </header>
 
-      {/* 찢어진 종이 */}
       <div className="torn-paper" />
 
-      {/* 격자 배경 */}
       <div className="grid-bg" />
 
-      {/* 일기 쓰기 버튼 */}
       <div className="write-btn-wrap">
         <button className="write-btn" onClick={() => navigate('/posts/create')}>
           + 일기 쓰기
         </button>
       </div>
 
-      {/* 게시물 그리드 */}
       <div className="post-grid">
         {posts.length === 0 ? (
           <p className="empty">아직 작성된 일기가 없어요 🐾</p>
@@ -83,8 +77,17 @@ const PostAll = () => {
                   : null
                 }
               </div>
-              <p className="post-title">제목 : {post.title}</p>
-              <p className="post-date">날짜 : {formatDate(post.createdAt)}</p>
+              <div className="post-info">
+                <div className="text-content">
+                  <p className="post-title">제목 : {post.title}</p>
+                  <p className="post-date">날짜 : {formatDate(post.createdAt)}</p>
+                </div>
+                {post.category && (
+                  <div className="post-tag">
+                    # {post.category === 'ETC' ? post.customCategory : (post.category === 'DOG' ? '강아지' : '고양이')}
+                  </div>
+                )}
+              </div>
             </div>
           ))
         )}

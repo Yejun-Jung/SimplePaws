@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./Signup.scss";
 import { useNavigate, NavLink } from "react-router-dom";
 import cat from "@/assets/images/sleeping_cat.png";
-import { signup } from "@/api/auth.api";
+import { signup } from "@/api/member.api";
 
 const Signup = () => {
   const [form, setForm] = useState({
@@ -38,7 +38,7 @@ const Signup = () => {
       navigate("/login");
     } catch (err) {
       console.error(err);
-      const message = err.response?.data?.message || "회원가입에 실패했습니다 (403: 권한 없음)";
+      const message = err.response?.data?.message || "회원가입에 실패했습니다. 서버 상태를 확인해주세요.";
       alert(message);
     }
   };

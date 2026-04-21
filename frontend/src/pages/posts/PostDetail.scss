@@ -196,11 +196,12 @@
             align-self: flex-start;
             display: inline-block;
             padding: 6px 10px;
-            background-color: $yellow;
+            background-color: #fdf0e0;
             color: $brown;
+            border: 1px solid $semi-brown;
             border-radius: 20px;
-            font-size: 14px;
-            font-weight: 600;
+            font-size: 12px;
+            font-weight: 400;
           }
         }
       }

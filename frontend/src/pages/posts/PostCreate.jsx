@@ -55,11 +55,13 @@ const PostCreate = () => {
       }
 
       await createPost(email, {
-  title: form.title,
-  content: form.content,
-  imageUrl,
-  category: category === 'ETC' ? customCategory : category,  // ← 수정
-})
+        date: form.date,
+        title: form.title,
+        content: form.content,
+        imageUrl,
+        category: category,
+        customCategory: category === 'ETC' ? customCategory : '',
+      })
       alert('게시물 등록되었습니다!')
       navigate('/main')
     } catch (err) {
