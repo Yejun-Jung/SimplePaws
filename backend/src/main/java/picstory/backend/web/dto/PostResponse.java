@@ -11,6 +11,7 @@ import java.time.LocalDateTime;
 public class PostResponse {
 
     private Long id;
+    private String date;        // ← 추가
     private String title;
     private String content;
     private String imageUrl;
@@ -20,6 +21,7 @@ public class PostResponse {
     public static PostResponse from(Post post) {
         return new PostResponse(
                 post.getId(),
+                post.getDate(),         // ← 추가
                 post.getTitle(),
                 post.getContent(),
                 post.getImageUrl(),

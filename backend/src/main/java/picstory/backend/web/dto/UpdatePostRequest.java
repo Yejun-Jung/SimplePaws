@@ -7,7 +7,7 @@ import picstory.backend.domain.PostCategory;
 @Getter
 @NoArgsConstructor
 public class UpdatePostRequest {
-
+    private String date;
     private String title;
     private String content;
     private String imageUrl;

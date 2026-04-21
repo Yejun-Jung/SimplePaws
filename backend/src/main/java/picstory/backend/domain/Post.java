@@ -20,6 +20,8 @@ public class Post {
     @JoinColumn(name = "member_id", nullable = false)
     private Member member;
 
+    private String date;
+
     @Column(nullable = false)
     private String title;
 
@@ -48,9 +50,10 @@ public class Post {
         this.updatedAt = LocalDateTime.now();
     }
 
-    public void update(String title, String content, String imageUrl, PostCategory category) {
+    public void update(String title, String content, String date, String imageUrl, PostCategory category) {
         this.title = title;
         this.content = content;
+        this.date = date;
         this.imageUrl = imageUrl;
         this.category = category;
     }

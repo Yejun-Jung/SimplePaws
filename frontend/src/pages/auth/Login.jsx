@@ -67,6 +67,7 @@ const Login = () => {
             placeholder="비밀번호"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            onKeyDown={(e) => e.key === 'Enter' && handleLogin()}
           />
           {error && <p className="error">{error}</p>}
           <button onClick={handleLogin}>로그인</button>

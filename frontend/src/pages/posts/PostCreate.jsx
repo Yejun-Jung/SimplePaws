@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import './PostCreate.scss'
 import { useNavigate } from 'react-router-dom'
-import { createPost } from '@/api/post.api'
+import { createPost, getPresignedUrl, uploadToS3 } from '@/api/post.api'
 
 const CATEGORIES = [
   { label: '🐶 강아지', value: 'DOG' },
@@ -45,22 +45,31 @@ const PostCreate = () => {
 
     try {
       const email = localStorage.getItem('email')
+      let imageUrl = ''
+
+      if (image) {
+        const presignRes = await getPresignedUrl(image.name)
+        const { presignedUrl, fileUrl } = presignRes.data
+        await uploadToS3(presignedUrl, image)
+        imageUrl = fileUrl
+      }
+
       await createPost(email, {
-        title: form.title,
-        content: form.content,
-        imageUrl: '',
-        category: category,
-      })
+  title: form.title,
+  content: form.content,
+  imageUrl,
+  category: category === 'ETC' ? customCategory : category,  // ← 수정
+})
       alert('게시물 등록되었습니다!')
       navigate('/main')
     } catch (err) {
+      console.error(err)
       alert('게시물 등록에 실패했습니다.')
     }
   }
 
   return (
     <section className='post-create'>
-      {/* SVG 필터 */}
       <svg width="0" height="0" style={{ position: 'absolute' }}>
         <filter id="torn-effect" x="-5%" y="-50%" width="110%" height="200%">
           <feTurbulence type="fractalNoise" baseFrequency="0.025" numOctaves="5" seed="3" result="noise" />
@@ -68,7 +77,6 @@ const PostCreate = () => {
         </filter>
       </svg>
 
-      {/* 헤더 */}
       <header className="header">
         <div className="logo" onClick={() => navigate('/main')}>
           <span>Simple</span>
@@ -84,20 +92,16 @@ const PostCreate = () => {
         </div>
       </header>
 
-      {/* 찢어진 종이 */}
       <div className="torn-paper" />
 
-      {/* 격자 배경 */}
       <div className="grid-bg" />
 
-      {/* 카드 */}
       <div className="create-card">
         <button className="back-btn" onClick={() => navigate(-1)}>
           &lt; 뒤로가기
         </button>
         <h1 className="title">새 일기 작성</h1>
 
-        {/* 사진 업로드 */}
         <label className="image-upload">
           {preview
             ? <img src={preview} alt="preview" />
@@ -106,7 +110,6 @@ const PostCreate = () => {
           <input type="file" accept="image/*" onChange={handleImageChange} />
         </label>
 
-        {/* 입력 폼 */}
         <div className="form">
           <div className="form-row">
             <label>날짜 :</label>
@@ -136,7 +139,6 @@ const PostCreate = () => {
             />
           </div>
 
-          {/* 카테고리 */}
           <div className="form-row">
             <label>분류 :</label>
             <div className="category-wrap">
@@ -153,7 +155,6 @@ const PostCreate = () => {
             </div>
           </div>
 
-          {/* 기타 직접 입력 */}
           {category === 'ETC' && (
             <div className="form-row">
               <label>직접 :</label>

@@ -4,9 +4,10 @@ services:
     container_name: simplepaws-mysql
     environment:
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-rootpass}
-      MYSQL_DATABASE: ${MYSQL_DATABASE:-cruddb}
-      MYSQL_USER: ${MYSQL_USER:-cruduser}
-      MYSQL_PASSWORD: ${MYSQL_PASSWORD:-crudpass}
+      MYSQL_DATABASE: ${MYSQL_DATABASE:-simplepawsdb}
+      MYSQL_USER: ${MYSQL_USER:-pawsuser}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD:-pawspass}
+      CORS_ALLOWED_ORIGINS: ${CORS_ALLOWED_ORIGINS:-http://localhost:5174} 
     ports:
       - "3307:3306"
     volumes:
@@ -35,9 +36,13 @@ services:
       mysql:
         condition: service_healthy
     environment:
-      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/${MYSQL_DATABASE:-cruddb}?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=Asia/Seoul
-      SPRING_DATASOURCE_USERNAME: ${MYSQL_USER:-cruduser}
-      SPRING_DATASOURCE_PASSWORD: ${MYSQL_PASSWORD:-crudpass}
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/${MYSQL_DATABASE:-simplepawsdb}?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=Asia/Seoul
+      SPRING_DATASOURCE_USERNAME: ${MYSQL_USER:-pawsuser}
+      SPRING_DATASOURCE_PASSWORD: ${MYSQL_PASSWORD:-pawspass}
+      AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID}
+      AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY}
+      AWS_REGION: ${AWS_REGION}
+      AWS_S3_BUCKET: ${AWS_S3_BUCKET}
       GRADLE_USER_HOME: /root/.gradle
     ports:
       - "8081:8080"
@@ -47,7 +52,7 @@ services:
       - /app/build
       - /app/.gradle
     healthcheck:
-      test: ["CMD-SHELL", "curl -f http://localhost:8080/api/todos || exit 1"]
+      test: ["CMD-SHELL", "curl -f http://localhost:8080/members || exit 1"]
       interval: 10s
       timeout: 5s
       retries: 10
@@ -59,8 +64,7 @@ services:
       dockerfile: Dockerfile.dev
     container_name: simplepaws-front
     depends_on:
-      backend:
-        condition: service_healthy
+      - backend
     environment:
       CHOKIDAR_USEPOLLING: "true"
       WATCHPACK_POLLING: "true"

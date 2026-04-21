@@ -2,6 +2,7 @@ package picstory.backend.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import picstory.backend.domain.Member;
 import picstory.backend.domain.Post;
 import picstory.backend.repository.MemberRepository;
@@ -20,7 +21,6 @@ public class PostService {
     private final PostRepository postRepository;
     private final MemberRepository memberRepository;
 
-    // 게시물 전체 조회
     public List<PostResponse> getPosts(String email) {
         Member member = memberRepository.findByEmail(email)
                 .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 회원입니다."));
@@ -30,20 +30,20 @@ public class PostService {
                 .collect(Collectors.toList());
     }
 
-    // 게시물 단건 조회
     public PostResponse getPost(Long postId) {
         Post post = postRepository.findById(postId)
                 .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 게시물입니다."));
         return PostResponse.from(post);
     }
 
-    // 게시물 생성
+    @Transactional
     public PostResponse createPost(String email, CreatePostRequest request) {
         Member member = memberRepository.findByEmail(email)
                 .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 회원입니다."));
 
         Post post = Post.builder()
                 .member(member)
+                .date(request.getDate())
                 .title(request.getTitle())
                 .content(request.getContent())
                 .imageUrl(request.getImageUrl())
@@ -53,16 +53,16 @@ public class PostService {
         return PostResponse.from(postRepository.save(post));
     }
 
-    // 게시물 수정
+    @Transactional
     public PostResponse updatePost(Long postId, UpdatePostRequest request) {
         Post post = postRepository.findById(postId)
                 .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 게시물입니다."));
 
-        post.update(request.getTitle(), request.getContent(), request.getImageUrl(), request.getCategory());
+        post.update(request.getTitle(), request.getContent(), request.getDate(), request.getImageUrl(), request.getCategory());
         return PostResponse.from(postRepository.save(post));
     }
 
-    // 게시물 삭제
+    @Transactional
     public void deletePost(Long postId) {
         postRepository.deleteById(postId);
     }

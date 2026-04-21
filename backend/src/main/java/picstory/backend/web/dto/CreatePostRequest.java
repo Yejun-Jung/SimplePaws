@@ -8,6 +8,7 @@ import picstory.backend.domain.PostCategory;
 @NoArgsConstructor
 public class CreatePostRequest {
 
+    private String date;
     private String title;
     private String content;
     private String imageUrl;
