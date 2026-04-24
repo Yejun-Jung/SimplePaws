@@ -54,6 +54,12 @@ const ProfileEdit = () => {
     }
   }
 
+  const handleRemoveImage = () => {
+    setImage(null)
+    setPreview(null)
+    setExistingImageUrl('')
+  }
+
   const handleSubmit = async () => {
     if (!form.name || !form.email) {
       alert('이름과 이메일은 필수입니다.')
@@ -102,8 +108,8 @@ const ProfileEdit = () => {
 
       <header className="header">
         <div className="logo" onClick={() => navigate('/main')}>
-          <span>Simple</span>
-          <span>Paws</span>
+          <span className='span1'>Simple</span>
+          <span className='span2'>Paws</span>
         </div>
         <div className="header-right">
           <button className="my-btn" onClick={() => navigate('/profile')}>MY</button>
@@ -132,10 +138,11 @@ const ProfileEdit = () => {
               {preview ? (
                 <img src={preview} alt="profile" />
               ) : (
-                <div className="placeholder"></div>
+                <div className="placeholder">사진 업로드</div>
               )}
               <input type="file" accept="image/*" onChange={handleImageChange} />
             </label>
+            <button className="img-remove-btn" onClick={handleRemoveImage}>사진 삭제</button>
           </div>
 
           <div className="edit-right">

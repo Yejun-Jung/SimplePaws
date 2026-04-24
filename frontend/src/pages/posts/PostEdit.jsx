@@ -129,8 +129,8 @@ const PostEdit = () => {
 
       <header className="header">
         <div className="logo" onClick={() => navigate("/main")}>
-          <span>Simple</span>
-          <span>Paws</span>
+          <span className="span1">Simple</span>
+          <span className="span2">Paws</span>
         </div>
         <div className="header-right">
           <button className="my-btn" onClick={() => navigate("/profile")}>

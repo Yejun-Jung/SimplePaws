@@ -74,9 +74,9 @@ const Login = () => {
         </div>
 
         <div className="links">
+          <p>계정이 없으신가요?</p>
           <NavLink to="/signup">회원가입</NavLink>
-          <span> / </span>
-          <NavLink to="/forgot">비밀번호 찾기</NavLink>
+
         </div>
 
         <img src={cat} alt="cat" className="cat-img" />

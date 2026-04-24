@@ -10,7 +10,6 @@
   justify-content: center;
   overflow-x: hidden;
 
-  // 격자 배경
   .grid-bg {
     position: fixed;
     inset: 0;
@@ -22,9 +21,9 @@
     z-index: 0;
   }
 
-  // 헤더
+  // 헤더 구성을 post-all과 동일하게 수정
   .header {
-    position: fixed;
+    position: fixed; // post-create는 중앙 정렬이므로 fixed가 안정적입니다.
     top: 0;
     left: 0;
     width: 100%;
@@ -33,14 +32,24 @@
     justify-content: space-between;
     padding: 16px 40px;
     z-index: 10;
+    background-color: transparent;
 
     .logo {
+      position: absolute;
+      top: 10px;
       display: flex;
       flex-direction: column;
       line-height: 1.0;
-      font-size: 43px;
+      font-size: 35px; // post-all의 35px로 통일
       color: $brown;
       cursor: pointer;
+      text-shadow: 2px 2px 0px rgba(0,0,0,0.1);
+
+      .span2 {
+        position: absolute;
+        top: 35px;
+        left: 30px;
+      }
     }
 
     .header-right {
@@ -50,8 +59,8 @@
 
       .my-btn {
         position: absolute;
-        right: 130px;
-        top: 50px;
+        right: 135px; // post-all 수치 135px로 통일
+        top: 45px;    // post-all 수치 45px로 통일
         background: none;
         border: none;
         font-size: 18px;
@@ -62,6 +71,9 @@
       }
 
       .logout-btn {
+        position: absolute;
+        right: 45px; // post-all 수치 45px로 통일
+        top: 40px;   // post-all 수치 40px로 통일
         background: none;
         border: none;
         font-size: 18px;
@@ -73,10 +85,9 @@
     }
   }
 
-  // 찢어진 종이
   .torn-paper {
     position: fixed;
-    top: -40px;
+    top: -50px;
     left: -100px;
     width: calc(100% + 200px);
     height: 160px;
@@ -85,7 +96,6 @@
     z-index: 5;
   }
 
-  // 카드
   .create-card {
     position: relative;
     z-index: 6;
@@ -122,7 +132,6 @@
       margin-bottom: 8px;
     }
 
-    // 사진 업로드
     .image-upload {
       width: 200px;
       height: 160px;
@@ -147,7 +156,6 @@
       }
     }
 
-    // 폼
     .form {
       width: 100%;
       max-width: 500px;
@@ -210,8 +218,8 @@
           }
         }
       }
-
     }
+
     .submit-btn {
       padding: 12px 32px;
       background-color: $brown;
@@ -229,5 +237,5 @@
         transform: translateY(-2px);
       }
     }
-}
+  }
 }

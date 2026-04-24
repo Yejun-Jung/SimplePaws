@@ -30,15 +30,24 @@
     justify-content: space-between;
     padding: 16px 40px;
     z-index: 10;
+    background-color: transparent;
 
     .logo {
+      position: absolute;
+      top: 10px;
       display: flex;
       flex-direction: column;
       line-height: 1.0;
-      font-size: 43px;
+      font-size: 35px;
       color: $brown;
       cursor: pointer;
       text-shadow: 2px 2px 0px rgba(0,0,0,0.1);
+
+      .span2 {
+        position: absolute;
+        top: 35px;
+        left: 30px;
+      }
     }
 
     .header-right {
@@ -48,8 +57,8 @@
 
       .my-btn {
         position: absolute;
-        right: 130px;
-        top: 50px;
+        right: 135px;
+        top: 45px;
         background: none;
         border: none;
         font-size: 18px;
@@ -60,6 +69,9 @@
       }
 
       .logout-btn {
+        position: absolute;
+        right: 45px;
+        top: 40px;
         background: none;
         border: none;
         font-size: 18px;
@@ -73,7 +85,7 @@
 
   .torn-paper {
     position: fixed;
-    top: -40px;
+    top: -50px;
     left: -100px;
     width: calc(100% + 200px);
     height: 160px;
@@ -170,6 +182,7 @@
           flex: 1;
           display: flex;
           flex-direction: column;
+          align-items: flex-start;
           gap: 25px;
           padding-top: 10px;
 
@@ -181,7 +194,7 @@
           }
 
           .content {
-            margin-top: 15px;
+            margin-top: 5px;
             line-height: 1.8;
 
             p {
@@ -193,15 +206,16 @@
           }
 
           .tag {
-            align-self: flex-start;
-            display: inline-block;
-            padding: 6px 10px;
-            background-color: #fdf0e0;
+            display: inline-flex;
+            align-items: center;
+            padding: 6px 16px;
+            background-color: #F8F1E7;
             color: $brown;
-            border: 1px solid $semi-brown;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: 400;
+            border: 1px solid #BC9A6D;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 600;
+            margin-top: 10px;
           }
         }
       }

@@ -42,7 +42,7 @@
   // 찢어진 종이 상단
   .torn-paper {
     position: absolute;
-    top: -40px;
+    top: -60px;
     left: -100px;
     width: calc(100% + 200px);
     height: 160px;
@@ -141,11 +141,19 @@
     }
 
     .links {
-      font-size: 15px;
-      color: $semi-brown;
-      margin-top: 40px;
+  color: $semi-brown;
+  margin-top: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  p {
+    margin: 0;
+    color: $semi-brown;
+  }
 
       a {
+        margin-left: 10px;
         color: $semi-brown;
         text-decoration: none;
 

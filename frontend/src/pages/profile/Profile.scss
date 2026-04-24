@@ -34,13 +34,21 @@
     background-color: transparent;
 
     .logo {
+      position: absolute;
+      top: 10px;
       display: flex;
       flex-direction: column;
       line-height: 1.0;
-      font-size: 43px;
+      font-size: 35px; // 35px로 통일
       color: $brown;
       cursor: pointer;
       text-shadow: 2px 2px 0px rgba(0,0,0,0.1);
+
+      .span2 {
+        position: absolute;
+        top: 35px;
+        left: 30px;
+      }
     }
 
     .header-right {
@@ -50,8 +58,8 @@
 
       .my-btn {
         position: absolute;
-        right: 130px;
-        top: 51px;
+        right: 135px; // 135px로 통일
+        top: 45px;    // 45px로 통일
         background: none;
         border: none;
         font-size: 18px;
@@ -62,6 +70,9 @@
       }
 
       .logout-btn {
+        position: absolute;
+        right: 45px; // 45px로 통일
+        top: 40px;   // 40px로 통일
         background: none;
         border: none;
         font-size: 18px;
@@ -75,7 +86,7 @@
 
   .torn-paper {
     position: fixed;
-    top: -40px;
+    top: -50px; // -50px로 통일
     left: -100px;
     width: calc(100% + 200px);
     height: 160px;
