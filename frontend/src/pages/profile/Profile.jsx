@@ -45,14 +45,12 @@ const Profile = () => {
     navigate('/')
   }
 
-  // 🔥 회원 탈퇴 로직 추가
   const handleDeleteAccount = async () => {
     if (window.confirm("탈퇴하시겠습니까?")) {
       try {
         const email = localStorage.getItem('email')
         await deleteMember(email)
         
-        // 로컬 스토리지 비우기 및 메인 화면으로 이동
         localStorage.removeItem('token')
         localStorage.removeItem('email')
         alert('회원탈퇴가 완료되었습니다. 이용해 주셔서 감사합니다.')
@@ -104,7 +102,6 @@ const Profile = () => {
             </div>
             <h2 className="user-name">{memberInfo.name}</h2>
             <button className="edit-profile-btn" onClick={() => navigate('/profile/edit')}>프로필 수정</button>
-            {/* 🔥 onClick 추가 */}
             <button className="delete-account-btn" onClick={handleDeleteAccount}>회원탈퇴</button>
           </div>
 

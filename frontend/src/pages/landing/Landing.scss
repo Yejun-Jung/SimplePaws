@@ -9,7 +9,6 @@
   align-items: center;
   justify-content: center;
 
-  // 격자 배경
   .grid-bg {
     position: absolute;
     inset: 0;
@@ -21,7 +20,6 @@
     z-index: 0;
   }
 
-  // 찢어진 종이 효과 (상단)
   .torn-paper {
     position: absolute;
     top: -60px;
@@ -33,7 +31,6 @@
     z-index: 2;
   }
 
-  // 콘텐츠 중앙 배치
   .landing-content {
     position: relative;
     z-index: 1;
@@ -46,7 +43,6 @@
     padding: 0 40px;
   }
 
-  // 폴라로이드 영역
   .polaroid-wrap {
     position: relative;
     width: 420px;
@@ -89,7 +85,6 @@
     }
   }
 
-  // 텍스트 영역
   .text-wrap {
     display: flex;
     flex-direction: column;

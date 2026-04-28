@@ -19,60 +19,71 @@
   }
 
   .header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 40px;
+  z-index: 10;
+  background-color: transparent;
+
+  .logo {
+    position: absolute;
+    top: 10px;
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 16px 40px;
-    z-index: 10;
-    background-color: transparent;
+    flex-direction: column;
+    line-height: 1.0;
+    font-size: 35px;
+    color: $brown;
+    cursor: pointer;
+    text-shadow: 2px 2px 0px rgba(0,0,0,0.1);
 
-    .logo {
-      display: flex;
-      flex-direction: column;
-      line-height: 1.0;
-      font-size: 43px;
-      color: $brown;
-      cursor: pointer;
-      text-shadow: 2px 2px 0px rgba(0,0,0,0.1);
-    }
-
-    .header-right {
-      display: flex;
-      align-items: center;
-      gap: 20px;
-
-      .my-btn {
-        position: absolute;
-        right: 130px;
-        top: 50px;
-        background: none;
-        border: none;
-        font-size: 18px;
-        font-weight: bold;
-        color: $brown;
-        cursor: pointer;
-        &:hover { text-decoration: underline; }
-      }
-
-      .logout-btn {
-        background: none;
-        border: none;
-        font-size: 18px;
-        font-weight: bold;
-        color: $brown;
-        cursor: pointer;
-        &:hover { text-decoration: underline; }
-      }
+    .span2 {
+      position: absolute;
+      top: 35px;
+      left: 30px;
     }
   }
 
+  .header-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+
+    .my-btn {
+      position: absolute;
+      right: 135px;
+      top: 45px;
+      background: none;
+      border: none;
+      font-size: 18px;
+      font-weight: bold;
+      color: $brown;
+      cursor: pointer;
+      &:hover { text-decoration: underline; }
+    }
+
+    .logout-btn {
+      position: absolute;
+      right: 45px;
+      top: 40px;
+      background: none;
+      border: none;
+      font-size: 18px;
+      font-weight: bold;
+      color: $brown;
+      cursor: pointer;
+      &:hover { text-decoration: underline; }
+    }
+  }
+}
+
   .torn-paper {
     position: absolute;
-    top: -40px;
+    top: -50px;
     left: -100px;
     width: calc(100% + 200px);
     height: 160px;

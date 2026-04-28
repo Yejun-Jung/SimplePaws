@@ -10,7 +10,6 @@
   justify-content: center;
   overflow: hidden;
 
-  // 격자 배경
   .grid-bg {
     position: absolute;
     inset: 0;
@@ -22,7 +21,6 @@
     z-index: 0;
   }
 
-  // 찢어진 종이 상단
   .torn-paper {
     position: absolute;
     top: -60px;
@@ -34,7 +32,6 @@
     z-index: 2;
   }
 
-  // 회원가입 카드
   .signup-card {
     position: relative;
     z-index: 3;

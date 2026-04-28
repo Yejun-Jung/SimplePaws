@@ -27,7 +27,6 @@
   }
 }
 
-  // 격자 배경
   .grid-bg {
     position: absolute;
     inset: 0;
@@ -39,7 +38,6 @@
     z-index: 0;
   }
 
-  // 찢어진 종이 상단
   .torn-paper {
     position: absolute;
     top: -60px;
@@ -51,7 +49,6 @@
     z-index: 2;
   }
 
-  // 로그인 카드
   .login-card {
     position: relative;
     z-index: 3;

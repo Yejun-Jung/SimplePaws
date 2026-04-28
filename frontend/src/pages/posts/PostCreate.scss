@@ -21,9 +21,8 @@
     z-index: 0;
   }
 
-  // 헤더 구성을 post-all과 동일하게 수정
   .header {
-    position: fixed; // post-create는 중앙 정렬이므로 fixed가 안정적입니다.
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
@@ -40,7 +39,7 @@
       display: flex;
       flex-direction: column;
       line-height: 1.0;
-      font-size: 35px; // post-all의 35px로 통일
+      font-size: 35px;
       color: $brown;
       cursor: pointer;
       text-shadow: 2px 2px 0px rgba(0,0,0,0.1);
@@ -59,8 +58,8 @@
 
       .my-btn {
         position: absolute;
-        right: 135px; // post-all 수치 135px로 통일
-        top: 45px;    // post-all 수치 45px로 통일
+        right: 135px;
+        top: 45px;
         background: none;
         border: none;
         font-size: 18px;
@@ -72,8 +71,8 @@
 
       .logout-btn {
         position: absolute;
-        right: 45px; // post-all 수치 45px로 통일
-        top: 40px;   // post-all 수치 40px로 통일
+        right: 45px;
+        top: 40px;
         background: none;
         border: none;
         font-size: 18px;
