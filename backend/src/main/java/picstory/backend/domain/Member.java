@@ -23,6 +23,8 @@ public class Member {
 
     private String profileImageUrl;
 
+    private String provider;
+
     public void update(String name, String email, String password, String bio, String profileImageUrl) {
         this.name = name;
         this.email = email;
