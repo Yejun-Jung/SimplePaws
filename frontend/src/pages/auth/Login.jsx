@@ -10,6 +10,12 @@ const Login = () => {
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
+  const KAKAO_AUTH_URL = `https://kauth.kakao.com/oauth/authorize?client_id=${import.meta.env.VITE_KAKAO_CLIENT_ID}&redirect_uri=${import.meta.env.VITE_KAKAO_REDIRECT_URI}&response_type=code`;
+
+  const handleKakaoLogin = () => {
+    window.location.href = KAKAO_AUTH_URL;
+  };
+
   const handleLogin = async () => {
     setError("");
 
@@ -79,6 +85,13 @@ const Login = () => {
           />
           {error && <p className="error">{error}</p>}
           <button onClick={handleLogin}>로그인</button>
+          
+          <button className="kakao-btn" onClick={handleKakaoLogin}>
+            <svg className="kakao-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 3C6.477 3 2 6.925 2 11.75c0 3.045 1.8 5.716 4.524 7.244l-.93 3.44c-.09.33.28.596.566.4L10.7 20.01c.42.055.848.084 1.3.084 5.523 0 10-3.925 10-8.75S17.523 3 12 3z" fill="#3C1E1E"/>
+            </svg>
+            카카오로 로그인
+          </button>
         </div>
 
         <div className="links">

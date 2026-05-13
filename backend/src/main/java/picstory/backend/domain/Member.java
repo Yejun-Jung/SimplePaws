@@ -23,6 +23,9 @@ public class Member {
 
     private String profileImageUrl;
 
+    @Enumerated(EnumType.STRING)
+    private MemberStatus status;
+
     private String provider;
 
     public void update(String name, String email, String password, String bio, String profileImageUrl) {
