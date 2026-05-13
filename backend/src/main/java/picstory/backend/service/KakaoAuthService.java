@@ -27,6 +27,13 @@ public class KakaoAuthService {
     private final JwtTokenProvider jwtTokenProvider;
     private final RestTemplate restTemplate = new RestTemplate();
 
+    public String getAuthorizationUrl() {
+        return "https://kauth.kakao.com/oauth/authorize"
+                + "?client_id=" + kakaoProperties.getClientId()
+                + "&redirect_uri=" + kakaoProperties.getRedirectUri()
+                + "&response_type=code";
+    }
+
     public String getAccessToken(String code) {
         HttpHeaders headers = new HttpHeaders();
         headers.add("Content-type", "application/x-www-form-urlencoded;charset=utf-8");

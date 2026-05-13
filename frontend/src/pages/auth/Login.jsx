@@ -10,10 +10,8 @@ const Login = () => {
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
-  const KAKAO_AUTH_URL = `https://kauth.kakao.com/oauth/authorize?client_id=${import.meta.env.VITE_KAKAO_CLIENT_ID}&redirect_uri=${import.meta.env.VITE_KAKAO_REDIRECT_URI}&response_type=code`;
-
   const handleKakaoLogin = () => {
-    window.location.href = KAKAO_AUTH_URL;
+    window.location.href = 'http://localhost:8081/api/auth/kakao';
   };
 
   const handleLogin = async () => {
