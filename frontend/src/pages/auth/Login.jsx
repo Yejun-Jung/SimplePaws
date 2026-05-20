@@ -11,8 +11,8 @@ const Login = () => {
   const navigate = useNavigate();
 
   const handleKakaoLogin = () => {
-  window.location.href = `${import.meta.env.VITE_API_URL}/api/auth/kakao`;
-};
+    window.location.href = "http://115.68.226.78:8081/api/auth/kakao";
+  };
 
   const handleLogin = async () => {
     setError("");
