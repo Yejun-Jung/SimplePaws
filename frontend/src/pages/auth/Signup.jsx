@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./Signup.scss";
 import { useNavigate, NavLink } from "react-router-dom";
 import cat from "@/assets/images/sleeping_cat.png";
-import { signup, checkEmail } from "@/api/member.api";
+import { signup, checkEmail } from "@/api/auth.api";
 
 const Signup = () => {
   const [form, setForm] = useState({
