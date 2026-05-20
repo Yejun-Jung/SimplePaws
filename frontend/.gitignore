@@ -8,7 +8,7 @@ pnpm-debug.log*
 lerna-debug.log*
 
 node_modules
-dist
+# dist <-- 이 부분을 주석 처리하여 dist 폴더가 Git에 추적되도록 합니다.
 dist-ssr
 *.local
 
