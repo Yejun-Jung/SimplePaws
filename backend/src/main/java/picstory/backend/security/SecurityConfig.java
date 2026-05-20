@@ -27,10 +27,9 @@ public class SecurityConfig {
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
-                        .requestMatchers("/members", "/auth/**", "/posts/**").permitAll()
-                        .requestMatchers("/files/**", "/api/s3/**").permitAll()
-                        .requestMatchers("/api/**").permitAll()
-                        .requestMatchers("/error").permitAll()
+                        .requestMatchers("/", "/health", "/health/**").permitAll()
+                        .requestMatchers("/members/**", "/auth/**", "/posts/**").permitAll()
+                        .requestMatchers("/files/**", "/api/s3/**", "/api/**", "/error").permitAll()
                         .anyRequest().authenticated()
                 )
                 .formLogin(form -> form.disable())
