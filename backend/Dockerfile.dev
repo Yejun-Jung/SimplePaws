@@ -7,7 +7,7 @@ COPY gradle /app/gradle
 COPY build.gradle settings.gradle gradle.properties* /app/
 
 RUN chmod +x /app/gradlew
-RUN /app/gradlew --version
+
 
 EXPOSE 8080
 
