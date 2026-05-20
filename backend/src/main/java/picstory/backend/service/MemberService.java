@@ -1,7 +1,7 @@
 package picstory.backend.service;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.crypto.password.PasswordEncoder; // 추가
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import picstory.backend.domain.Member;
@@ -16,13 +16,16 @@ public class MemberService {
 
     private final MemberRepository memberRepository;
     private final PostRepository postRepository;
-    private final PasswordEncoder passwordEncoder; // 주입 추가
+    private final PasswordEncoder passwordEncoder;
 
     @Transactional
     public void signup(SignupRequest request) {
+        if (memberRepository.existsByEmail(request.getEmail())) {
+            throw new IllegalArgumentException("이미 사용 중인 이메일입니다.");
+        }
+
         Member member = Member.builder()
                 .email(request.getEmail())
-                // 🔥 비밀번호를 암호화해서 저장해야 합니다.
                 .password(passwordEncoder.encode(request.getPassword()))
                 .name(request.getName())
                 .build();
@@ -40,7 +43,6 @@ public class MemberService {
         Member member = memberRepository.findByEmail(email)
                 .orElseThrow(() -> new IllegalArgumentException("User not found"));
 
-        // 🔥 수정 시에도 비밀번호가 넘어왔다면 암호화해서 업데이트해야 합니다.
         String encodedPassword = member.getPassword();
         if (request.getPassword() != null && !request.getPassword().isEmpty()) {
             encodedPassword = passwordEncoder.encode(request.getPassword());
@@ -56,5 +58,10 @@ public class MemberService {
 
         postRepository.deleteByMember(member);
         memberRepository.delete(member);
+    }
+
+    @Transactional(readOnly = true)
+    public boolean checkEmailDuplicate(String email) {
+        return memberRepository.existsByEmail(email);
     }
 }

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./Signup.scss";
 import { useNavigate, NavLink } from "react-router-dom";
 import cat from "@/assets/images/sleeping_cat.png";
-import { signup } from "@/api/member.api";
+import { signup, checkEmail } from "@/api/member.api";
 
 const Signup = () => {
   const [form, setForm] = useState({
@@ -11,15 +11,45 @@ const Signup = () => {
     passwordConfirm: "",
     name: "",
   });
+  const [isEmailChecked, setIsEmailChecked] = useState(false);
   const navigate = useNavigate();
 
   const handleChange = (e) => {
+    if (e.target.name === "email") {
+      setIsEmailChecked(false);
+    }
     setForm({ ...form, [e.target.name]: e.target.value });
+  };
+
+  const handleCheckEmail = async () => {
+    if (!form.email) {
+      alert("이메일을 입력해주세요.");
+      return;
+    }
+
+    try {
+      const res = await checkEmail(form.email);
+      if (res.data) {
+        alert("이미 사용 중인 이메일입니다.");
+        setIsEmailChecked(false);
+      } else {
+        alert("사용 가능한 이메일입니다.");
+        setIsEmailChecked(true);
+      }
+    } catch (err) {
+      console.error(err);
+      alert("중복 확인 중 오류가 발생했습니다.");
+    }
   };
 
   const handleSignup = async () => {
     if (!form.email || !form.password || !form.passwordConfirm || !form.name) {
       alert("모든 항목을 입력해주세요.");
+      return;
+    }
+
+    if (!isEmailChecked) {
+      alert("이메일 중복 확인을 진행해주세요.");
       return;
     }
 
@@ -77,13 +107,19 @@ const Signup = () => {
         <p className="label">회원이 되어주세요!</p>
 
         <div className="form">
-          <input
-            type="email"
-            name="email"
-            placeholder="이메일 (아이디)"
-            value={form.email}
-            onChange={handleChange}
-          />
+          <div style={{ display: "flex", gap: "8px" }}>
+            <input
+              type="email"
+              name="email"
+              placeholder="이메일 (아이디)"
+              value={form.email}
+              onChange={handleChange}
+              style={{ flex: 1 }}
+            />
+            <button type="button" onClick={handleCheckEmail} style={{ width: "auto", padding: "0 15px", whiteSpace: "nowrap" }}>
+              중복확인
+            </button>
+          </div>
           <input
             type="password"
             name="password"

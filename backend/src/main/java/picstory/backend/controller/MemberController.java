@@ -24,6 +24,12 @@ public class MemberController {
         return ResponseEntity.ok().build();
     }
 
+    @GetMapping("/check-email")
+    public ResponseEntity<Boolean> checkEmailDuplicate(@RequestParam(name = "email") String email) {
+        boolean isDuplicate = memberService.checkEmailDuplicate(email);
+        return ResponseEntity.ok(isDuplicate);
+    }
+
     @GetMapping
     public ResponseEntity<Map<String, Object>> getMember(@RequestParam(name = "email") String email) {
         Member member = memberService.getMember(email);
