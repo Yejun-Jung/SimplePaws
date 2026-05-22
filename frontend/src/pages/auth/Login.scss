@@ -32,9 +32,9 @@
     position: absolute;
     inset: 0;
     background-image:
-      linear-gradient(rgba(255, 255, 255, 0.18) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255, 255, 255, 0.18) 1px, transparent 1px);
-    background-size: calc(100% / 9) calc(100% / 5);
+      linear-gradient(rgba(255,255,255,0.18) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.18) 1px, transparent 1px);
+    background-size: 200px 200px;
     pointer-events: none;
     z-index: 0;
   }
@@ -57,7 +57,7 @@
     border-radius: 20px;
     padding: 48px 60px 60px;
     width: 1060px;
-    height: 600px;
+    height: 630px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -146,7 +146,6 @@
           font-weight: 700;
           letter-spacing: 0.03em;
 
-
           .kakao-icon {
             width: 22px;
             height: 22px;
@@ -196,6 +195,133 @@
       color: #e05555;
       text-align: center;
       margin-top: -4px;
+    }
+  }
+}
+
+@media (max-width: 1024px) {
+  .login {
+    .grid-bg {
+      background-size: 150px 150px;
+    }
+
+    .login-card {
+      width: 680px;
+      height: 550px;
+      padding: 40px 48px 80px;
+      gap: 10px;
+
+      .title {
+        font-size: clamp(32px, 5vw, 52px);
+      }
+
+      .label {
+        font-size: 18px;
+      }
+
+      .form {
+        input {
+          width: 420px;
+          height: 48px;
+          font-size: 14px;
+        }
+
+        button {
+          font-size: 15px;
+          padding: 14px;
+        }
+      }
+
+      .cat-img {
+        width: 100px;
+        bottom: -6px;
+        right: -12px;
+      }
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .login {
+    overflow-y: auto;
+
+    .grid-bg {
+      background-size: 130px 130px;
+    }
+
+    .torn-paper {
+      top: -40px;
+      height: 120px;
+    }
+
+    .login-card {
+      width: calc(100% - 32px);
+      max-width: 400px;
+      height: 500px;
+      padding: 32px 24px 72px;
+      gap: 8px;
+      border-radius: 16px;
+      margin: auto;
+
+      .back-btn {
+        font-size: 16px;
+      }
+
+      .title {
+        font-size: clamp(28px, 10vw, 40px);
+      }
+
+      .label {
+        font-size: 16px;
+        margin-bottom: 4px;
+      }
+
+      .form {
+        width: 100%;
+
+        input {
+          width: 100%;
+          height: 46px;
+          font-size: 14px;
+          padding: 12px 14px;
+          box-sizing: border-box;
+        }
+
+        button {
+          font-size: 14px;
+          padding: 13px;
+
+          &.kakao-btn {
+            font-size: 14px;
+
+            .kakao-icon {
+              width: 18px;
+              height: 18px;
+            }
+          }
+        }
+      }
+
+      .links {
+        font-size: 13px;
+        flex-direction: column;
+        gap: 4px;
+        text-align: center;
+
+        a {
+          margin-left: 0;
+        }
+      }
+
+      .cat-img {
+        width: 80px;
+        bottom: -5px;
+        right: -8px;
+      }
+
+      .error {
+        font-size: 12px;
+      }
     }
   }
 }

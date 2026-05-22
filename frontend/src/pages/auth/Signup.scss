@@ -14,9 +14,9 @@
     position: absolute;
     inset: 0;
     background-image:
-      linear-gradient(rgba(255, 255, 255, 0.18) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255, 255, 255, 0.18) 1px, transparent 1px);
-    background-size: calc(100% / 9) calc(100% / 5);
+      linear-gradient(rgba(255,255,255,0.18) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.18) 1px, transparent 1px);
+    background-size: 200px 200px;
     pointer-events: none;
     z-index: 0;
   }
@@ -39,7 +39,7 @@
     border-radius: 20px;
     padding: 36px 60px 60px;
     width: 1060px;
-    height: 600px;
+    height: 620px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -166,6 +166,122 @@
       bottom: -7px;
       right: -20px;
       width: 120px;
+    }
+  }
+}
+
+@media (max-width: 1024px) {
+  .signup {
+    .grid-bg {
+      background-size: 150px 150px;
+    }
+    
+    .signup-card {
+      width: 680px;
+      height: 550px;
+      padding: 36px 48px 60px;
+
+      .back-btn {
+        top: 36px;
+        left: 48px;
+        font-size: 18px;
+      }
+
+      .title {
+        font-size: 42px;
+      }
+
+      .label {
+        font-size: 18px;
+      }
+
+      .form {
+        max-width: 420px;
+
+        input {
+          font-size: 14px;
+        }
+
+        button {
+          font-size: 15px;
+          padding: 14px;
+        }
+      }
+
+      .cat-img {
+        width: 100px;
+        bottom: -6px;
+        right: -12px;
+      }
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .signup {
+    overflow-y: auto;
+
+    .grid-bg {
+      background-size: 130px 130px;
+    }
+
+    .torn-paper {
+      top: -40px;
+      height: 120px;
+    }
+
+    .signup-card {
+      width: calc(100% - 32px);
+      max-width: 400px;
+      height: auto;
+      padding: 56px 24px 80px;
+      border-radius: 16px;
+      margin: auto;
+
+      .back-btn {
+        top: 24px;
+        left: 24px;
+        font-size: 16px;
+      }
+
+      .title {
+        font-size: clamp(28px, 10vw, 40px);
+      }
+
+      .label {
+        font-size: 16px;
+        margin-bottom: 8px;
+      }
+
+      .form {
+        max-width: 100%;
+
+        input {
+          font-size: 14px;
+          padding: 12px 14px;
+        }
+
+        button {
+          font-size: 14px;
+          padding: 13px;
+        }
+      }
+
+      .links {
+        bottom: 28px;
+        font-size: 13px;
+      }
+
+      .cat-img {
+        width: 80px;
+        bottom: -5px;
+        right: -8px;
+      }
+
+      .error,
+      .success {
+        font-size: 12px;
+      }
     }
   }
 }

@@ -127,15 +127,9 @@
       }
 
       .card-content {
-        align-items: center;
         display: flex;
+        align-items: center;
         gap: 80px;
-
-        @media (max-width: 768px) {
-          flex-direction: column;
-          align-items: center;
-          gap: 40px;
-        }
 
         .media-section {
           display: flex;
@@ -216,6 +210,190 @@
             font-size: 16px;
             font-weight: 600;
             margin-top: 10px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 1024px) {
+  .post-detail {
+    .grid-bg {
+      background-size: 150px 150px;
+    }
+
+    .header {
+      padding: 16px 24px;
+
+      .header-right {
+        .my-btn {
+          right: 110px;
+          top: 45px;
+          font-size: 16px;
+        }
+
+        .logout-btn {
+          right: 24px;
+          top: 40px;
+          font-size: 16px;
+        }
+      }
+    }
+
+    .detail-container {
+      padding: 160px 24px 60px;
+
+      .detail-card {
+        height: auto;
+        padding: 40px;
+
+        .back-btn {
+          margin-bottom: 28px;
+          font-size: 16px;
+        }
+
+        .card-content {
+          gap: 48px;
+
+          .media-section {
+            .polaroid {
+              padding: 12px 12px 40px 12px;
+
+              .img-placeholder {
+                width: 220px;
+                height: 220px;
+              }
+            }
+
+            .action-btns {
+              gap: 16px;
+
+              button {
+                font-size: 14px;
+              }
+            }
+          }
+
+          .text-section {
+            gap: 20px;
+
+            p {
+              font-size: 20px;
+            }
+
+            .content p {
+              font-size: 17px;
+            }
+
+            .tag {
+              font-size: 14px;
+              padding: 5px 14px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .post-detail {
+    .grid-bg {
+      background-size: 130px 130px;
+    }
+
+    .header {
+      padding: 12px 16px;
+
+      .logo {
+        font-size: 26px;
+
+        .span2 {
+          top: 26px;
+          left: 22px;
+        }
+      }
+
+      .header-right {
+        .my-btn {
+          right: 88px;
+          top: 36px;
+          font-size: 14px;
+        }
+
+        .logout-btn {
+          right: 16px;
+          top: 32px;
+          font-size: 14px;
+        }
+      }
+    }
+
+    .torn-paper {
+      top: -40px;
+      height: 120px;
+    }
+
+    .detail-container {
+      padding: 130px 16px 48px;
+      align-items: flex-start;
+
+      .detail-card {
+        height: auto;
+        padding: 28px 20px 36px;
+        border-radius: 16px;
+
+        .back-btn {
+          font-size: 15px;
+          margin-bottom: 20px;
+        }
+
+        .card-content {
+          flex-direction: column;
+          align-items: center;
+          gap: 28px;
+
+          .media-section {
+            width: 100%;
+            align-items: center;
+
+            .polaroid {
+              padding: 10px 10px 36px 10px;
+              margin-bottom: 16px;
+
+              .img-placeholder {
+                width: 200px;
+                height: 200px;
+              }
+            }
+
+            .action-btns {
+              gap: 24px;
+
+              button {
+                font-size: 14px;
+              }
+            }
+          }
+
+          .text-section {
+            width: 100%;
+            gap: 16px;
+            padding-top: 0;
+
+            p {
+              font-size: 16px;
+            }
+
+            .content p {
+              font-size: 15px;
+            }
+
+            .tag {
+              font-size: 13px;
+              padding: 4px 12px;
+            }
           }
         }
       }
