@@ -116,7 +116,7 @@ const ProfileEdit = () => {
           <button className="logout-btn" onClick={() => {
             localStorage.removeItem('token')
             localStorage.removeItem('email')
-            navigate('/')
+            navigate('/', { replace: true })
           }}>로그아웃</button>
         </div>
       </header>

@@ -26,7 +26,7 @@ const PostAll = () => {
   const handleLogout = () => {
     localStorage.removeItem('token')
     localStorage.removeItem('email')
-    navigate('/')
+    navigate('/', { replace: true })
   }
 
   const formatDate = (dateStr) => {

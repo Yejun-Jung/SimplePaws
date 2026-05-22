@@ -42,7 +42,7 @@ const Profile = () => {
   const handleLogout = () => {
     localStorage.removeItem('token')
     localStorage.removeItem('email')
-    navigate('/')
+    navigate('/', { replace: true })
   }
 
   const handleDeleteAccount = async () => {
@@ -54,7 +54,7 @@ const Profile = () => {
         localStorage.removeItem('token')
         localStorage.removeItem('email')
         alert('회원탈퇴가 완료되었습니다. 이용해 주셔서 감사합니다.')
-        navigate('/')
+        navigate('/', { replace: true })
       } catch (err) {
         console.error(err)
         alert('회원탈퇴 처리에 실패했습니다.')

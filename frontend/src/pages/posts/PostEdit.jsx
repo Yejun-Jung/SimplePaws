@@ -40,9 +40,9 @@ const PostEdit = () => {
           title: data.title || "",
           content: data.content || "",
         });
-        
+
         setCategory(data.category || "");
-        
+
         if (data.category === "ETC") {
           setCustomCategory(data.customCategory || "");
         }
@@ -68,6 +68,12 @@ const PostEdit = () => {
       setImage(file);
       setPreview(URL.createObjectURL(file));
     }
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("email");
+    navigate('/', { replace: true });
   };
 
   const handleSubmit = async () => {
@@ -136,14 +142,7 @@ const PostEdit = () => {
           <button className="my-btn" onClick={() => navigate("/profile")}>
             MY
           </button>
-          <button
-            className="logout-btn"
-            onClick={() => {
-              localStorage.removeItem("token");
-              localStorage.removeItem("email");
-              navigate("/");
-            }}
-          >
+          <button className="logout-btn" onClick={handleLogout}>
             로그아웃
           </button>
         </div>

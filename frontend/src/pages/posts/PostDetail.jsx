@@ -36,7 +36,7 @@ const PostDetail = () => {
   const handleLogout = () => {
     localStorage.removeItem('token')
     localStorage.removeItem('email')
-    navigate('/')
+    navigate('/', { replace: true })
   }
 
   if (!post) {
