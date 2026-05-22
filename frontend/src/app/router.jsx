@@ -9,18 +9,19 @@ import PostDetail from "../pages/posts/PostDetail";
 import PostEdit from "../pages/posts/PostEdit";
 import Profile from "../pages/profile/Profile";
 import ProfileEdit from "../pages/profile/ProfileEdit";
+import PrivateRoute from "../components/PrivateRoute";
 
 const router = createBrowserRouter([
   { path: "/", element: <Landing /> },
   { path: "/login", element: <Login /> },
   { path: "/signup", element: <Signup /> },
   { path: "/oauth/callback/kakao", element: <KakaoCallback /> },
-  { path: "/main", element: <PostAll /> },
-  { path: "/posts/create", element: <PostCreate /> },
-  { path: "/posts/:id", element: <PostDetail /> },
-  { path: "/posts/edit/:id", element: <PostEdit /> },
-  { path: "/profile", element: <Profile /> },
-  { path: "/profile/edit", element: <ProfileEdit /> },
+  { path: "/main", element: <PrivateRoute><PostAll /></PrivateRoute> },
+  { path: "/posts/create", element: <PrivateRoute><PostCreate /></PrivateRoute> },
+  { path: "/posts/:id", element: <PrivateRoute><PostDetail /></PrivateRoute> },
+  { path: "/posts/edit/:id", element: <PrivateRoute><PostEdit /></PrivateRoute> },
+  { path: "/profile", element: <PrivateRoute><Profile /></PrivateRoute> },
+  { path: "/profile/edit", element: <PrivateRoute><ProfileEdit /></PrivateRoute> },
 ]);
 
 export default router;
